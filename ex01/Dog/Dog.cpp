@@ -6,12 +6,12 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 00:30:16 by vgejno            #+#    #+#             */
-/*   Updated: 2023/07/13 21:35:42 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/07/18 19:41:09 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
-#include "Animal.hpp"
+#include "../Animal/Animal.hpp"
 
 Dog::Dog() : Animal() {
 	

@@ -1,16 +1,17 @@
-NAME = polymorphism
+NAME = animalbrain
 CXX = g++
 FLAGS = -std=c++98
 FLAGS += -Wall -Werror -Wextra
 RM = rm -f
 
 SRCS = main.cpp \
-		Animal.cpp \
-		Cat.cpp \
-		Dog.cpp \
-		WrongAnimal.cpp \
-		WrongCat.cpp \
-		WrongDog.cpp
+		Animal/Animal.cpp \
+		Cat/Cat.cpp \
+		Dog/Dog.cpp \
+		Brain/Brain.cpp \
+		WrongAnimal/WrongAnimal.cpp \
+		WrongAnimal/WrongCat.cpp \
+		WrongAnimal/WrongDog.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
