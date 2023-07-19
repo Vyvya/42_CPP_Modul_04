@@ -2,6 +2,7 @@ NAME = animalbrain
 CXX = g++
 FLAGS = -std=c++98
 FLAGS += -Wall -Werror -Wextra
+# FLAGS += -fsanitize=address
 RM = rm -f
 
 SRCS = main.cpp \

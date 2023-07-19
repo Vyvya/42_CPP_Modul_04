@@ -6,7 +6,7 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 00:01:50 by vgejno            #+#    #+#             */
-/*   Updated: 2023/07/13 21:06:45 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/07/19 19:49:35 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include <string>
+
+#include "../Brain/Brain.hpp"
 
 class Animal {
 	
@@ -35,7 +37,7 @@ class Animal {
 		// void setType( std::string type );
 		
 		virtual void makeSound() const;
-			
+		virtual Brain* getBrain() const;
 };
 
 #endif

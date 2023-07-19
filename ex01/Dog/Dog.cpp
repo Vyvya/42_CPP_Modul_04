@@ -6,7 +6,7 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 00:30:16 by vgejno            #+#    #+#             */
-/*   Updated: 2023/07/18 19:41:09 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/07/19 21:09:56 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 Dog::Dog() : Animal() {
 	
 	this->_type = "Dog";
+	this->_brain = new Brain();
 	std::cout << "Dog born" << std::endl;
 }
 
@@ -27,23 +28,35 @@ Dog::Dog( std::string type ) : Animal( type ) {
 Dog::Dog( const Dog& other ) {
 
 	this->_type = other._type;
-	std::cout << "Copy constructor on Dog " << this->_type << " called" << std::endl;
+	_brain = new Brain( *other._brain);
+
+	std::cout << "Copy constructor on Dog called" << std::endl;
 }
 
 Dog::~Dog() {
 
-	std::cout << "Dog " << this->_type << " died" << std::endl;
+	delete this->_brain;
+	std::cout << "Dog died" << std::endl;
 }
 
 Dog& Dog::operator=( const Dog& other ) {
 
 	if(this != &other) {
 		
+		delete this->_brain;
 		this->_type = other._type;
+		_brain = new Brain( *other._brain );
 	}
-	std::cout << "Copy assignement operator on Dog " << this->_type << " called" << std::endl;
+	
+	std::cout << "Copy assignement operator on Dog called" << std::endl;
 
 	return *this;
+}
+
+Brain* Dog::getBrain() const {
+	
+	std::cout << "Dog got a doggy's idea in his brain" << std::endl;
+	return this->_brain;
 }
 
 // std::string Dog::getType() {

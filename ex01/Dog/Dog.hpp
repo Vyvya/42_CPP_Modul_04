@@ -6,7 +6,7 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 00:01:50 by vgejno            #+#    #+#             */
-/*   Updated: 2023/07/18 19:41:28 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/07/19 18:11:54 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Dog : public Animal {
 	
 	private:
 
-		Brain *brain;
+		Brain* _brain;
 
 	public:
 

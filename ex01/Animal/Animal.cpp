@@ -6,11 +6,12 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 00:01:50 by vgejno            #+#    #+#             */
-/*   Updated: 2023/07/18 19:34:22 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/07/19 20:21:06 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
+#include "../Brain/Brain.hpp"
 
 Animal::Animal() {
 	
@@ -54,3 +55,14 @@ void Animal::makeSound() const {
 
 	std::cout << "Animal " << this->_type << " makes sound" << std::endl;
 }
+
+Brain* Animal::getBrain() const {
+
+	return nullptr;
+}
+
+// std::ostream &operator<<( std::ostram &ostream, const Animal &instance ) {
+	
+// 	ostream << instance.getType();
+// 	return ostream;
+// }

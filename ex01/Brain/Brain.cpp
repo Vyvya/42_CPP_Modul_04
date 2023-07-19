@@ -6,7 +6,7 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 10:55:03 by vgejno            #+#    #+#             */
-/*   Updated: 2023/07/18 20:26:29 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/07/19 17:33:30 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,27 @@
 
 Brain::Brain() {
 
-	std::cout << "Brain formed" << std::endl;
+	// std::cout << "Brain formed" << std::endl;
 }
 
-Brain::Brain( const Animal& animal ) {
+Brain::Brain( const Brain& other ) {
 	
-	// if( this != &other ) {
+	if( this != &other ) {
 		
-	// 	for( int i = 0; i < NUM_IDEAS; i++ ) {
+		for( int i = 0; i < NUM_IDEAS; i++ ) {
 
-	// 		brain[i] = other.brain[i];
-	// 	} 
-	// }
-	// std::cout << "Copy of Brain formed" << std::endl;
-	
+			idea[i] = other.idea[i];
+		} 
+	}
 	   std::cout << "Copy of Brain formed" << std::endl;
-    // Copy the brain information from the animal
-    // Update the code here to extract the brain information from the Animal object
-    // and store it in the brain array
-    // for (int i = 0; i < NUM_IDEAS; i++) {
-    //     brain[i] = animal.getBrain()[i];
-    // }
 }
 
 Brain::~Brain() {
 
+	// for(int j = 0; j < NUM_IDEAS; j++ ) {
+		
+	// 	// delete idea[j];
+	// } 
 	std::cout << "Brain nihiliated" << std::endl;
 }
 
@@ -48,9 +44,10 @@ Brain& Brain::operator=( const Brain& other ) {
 		
 		for( int i = 0; i < NUM_IDEAS; i++ ) {
 
-			brain[i] = other.brain[i];
+			idea[i] = other.idea[i];
 		} 
 	}
+
 	std::cout << "Copy assignement operator of Brain called" << std::endl;
 	return ( *this );
 }
