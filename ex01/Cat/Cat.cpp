@@ -6,7 +6,7 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 00:30:06 by vgejno            #+#    #+#             */
-/*   Updated: 2023/07/19 21:10:44 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/07/20 14:48:16 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,5 @@ Brain* Cat::getBrain() const {
 
 void Cat::makeSound() const {
 
-	std::cout << "Cat " << this->_type << " MIAOUUUUUUUU" << std::endl;
+	std::cout << "Cat says: MIAOUUUUUUUU" << std::endl; //this->_type << 
 }

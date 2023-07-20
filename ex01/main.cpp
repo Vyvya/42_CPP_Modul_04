@@ -6,7 +6,7 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 00:29:25 by vgejno            #+#    #+#             */
-/*   Updated: 2023/07/19 21:10:34 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/07/20 22:26:18 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@
 #define OR	"\033[38;5;208m"
 #define LB	"\033[38;5;39m"
 #define VL	"\033[38;5;141m"
+#define YL	"\033[38;5;226m"
+#define RD	"\033[38;5;196m"
+#define BL "\033[38;5;27m"
+#define GN "\033[38;5;34m"
+#define LY	"\033[93m"
 #define RES	"\033[0m"
 
 #define NUM_ANIMALS 4
@@ -32,26 +37,92 @@ void printHeadline( std::string color, std::string msg) {
 }
 
 void sound_test(const Animal* j, const Animal* i) {
+	
+	printHeadline( VL, "_____All make noise_____");
 
-	// printHeadline( VL, "\tObjects created");
-
-	// const Animal* j = new Dog();
-	// const Animal* i = new Cat();
-
-	printHeadline( GR, "\tAll make noise");
-
+	std::cout << GR;
 	j->makeSound();
 	i->makeSound();
+	std::cout << RES;
+}
 
-	// printHeadline( VL, "\tObjects deleted");
-
-
+void copy_idea_test() {
 	
+	std::cout << std::endl;
+	printHeadline( VL, "_____Test copy Dog_____");
+
+	Dog ju;
+	Dog boo(ju);
+	
+	std::cout << std::endl;
+	printHeadline( VL, "_____Brain set into parent dog_____");
+	
+	ju.getBrain()->setIdea( 9, "I love sausages");
+	
+	std::cout << YL;
+	std::cout << ju.getType() << " Ju has one only idea: " << ju.getDogIdea(9) << std::endl;
+	std::cout << ju.getType() << " Boo has the idea: " << boo.getDogIdea(9) << RES << std::endl;
+	
+	std::cout << std::endl;
+	printHeadline( VL, "_____Brain set into copied dog_____");
+
+	boo.getBrain()->setIdea( 9, "I love raw meet");
+	
+	std::cout << RD;
+	std::cout << ju.getType() << " Ju has one only idea: " << ju.getDogIdea(9) << std::endl;
+	std::cout << ju.getType() << " Boo has the idea: " << boo.getDogIdea(9) << RES << std::endl;
+	
+	std::cout << std::endl;
+	printHeadline( VL, "_____Test assignement operator Dog_____");
+
+	Dog mu, gi;
+
+	mu.getBrain()->setIdea( 2, "BRRRRRRRRRR");
+	
+	std::cout << BL;
+	std::cout << mu.getType() << " Mu has an idea: " << mu.getDogIdea(2) << std::endl;
+	std::cout << gi.getType() << " Gi has the idea: " << gi.getDogIdea(2) << RES << std::endl;
+	
+	std::cout << std::endl;
+	printHeadline( VL, "_____Deep Copy_____");
+	
+	gi = mu;
+
+	std::cout << GN;
+	std::cout << mu.getType() << " Mu has one only idea: " << mu.getDogIdea(2) << std::endl;
+	std::cout << gi.getType() << " Gi has the idea: " << gi.getDogIdea(2) << RES << std::endl;
+	
+	std::cout << std::endl;
+	printHeadline( VL, "_____Copied dog changes idea_____");
+	
+	gi.getBrain()->setIdea( 2, "ouuuuuuuuuuuuuuu");
+
+	std::cout << LY;
+	std::cout << mu.getType() << " Mu has one only idea: " << mu.getDogIdea(2) << std::endl;
+	std::cout << gi.getType() << " Gi has the idea: " << gi.getDogIdea(2) << RES << std::endl;
+	
+	std::cout << std::endl;
+
+}
+
+void copy_test() {
+	
+	printHeadline( VL, "_____Test copy Dog_____");
+
+	Dog ju;
+	Dog boo(ju);
+	
+	std::cout << std::endl;
+	
+	printHeadline( VL, "_____Test assignement operator Dog_____");
+
+	Dog mu, gi;
+	gi = mu;
 }
 
 int main() {
 
-	printHeadline( VL, "\tObjects created");
+	printHeadline( VL, "_____Objects created_____");
 
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
@@ -59,79 +130,68 @@ int main() {
 	std::cout << std::endl;
 	
 	sound_test( j, i);
+	std::cout << std::endl;
 	
 	const Animal* animals[NUM_ANIMALS];
 	
 	Brain* catBrain = nullptr;
 	Brain* dogBrain = nullptr;
 	
+	copy_test();
 	std::cout << std::endl;
-	printHeadline( VL, "\tTest copy Dog");
-
-	Dog ju;
-	Dog boo(ju);
 	
-	std::cout << std::endl;
-	printHeadline( VL, "\tTest assignement operator Dog");
+	printHeadline( VL, "_____Array of Animals created_____");
 
-	Dog mu, gi;
-	gi = mu;
+	for (int idx = 0; idx < NUM_ANIMALS; idx++) {
 
-	std::cout << std::endl;
-	printHeadline( VL, "\tArray of Animals created");
+		if ( idx < NUM_ANIMALS / 2 ) {
 
-	for (int idx = 0; idx < NUM_ANIMALS / 2; idx++) {
-
-		animals[idx] = new Dog();
-		std::cout << animals[idx]->getType() << " " << std::endl;
-		animals[idx]->makeSound();
-		// Dog* dogPtr = dynamic_cast<Dog*>( animals[idx]);
-		// if( dogPtr != nullPtr ) {
+			animals[idx] = new Dog();
+			std::cout << animals[idx]->getType() << " " << std::endl;
+			animals[idx]->makeSound();
+			dogBrain = animals[idx]->getBrain();
 			
- 		// 	const dogPtr->getBrain()->idea[0] = "I want to play";
-		// animals[idx]->getBrain()->idea[0] = "Bla";
-			// std::cout << animals[idx]->getBrain()->idea[0] << std::endl;
-		// }
-		dogBrain = animals[idx]->getBrain();
-		dogBrain->idea[0] = "\"I wanna play\"";
-		std::cout << OR;
-		std::cout << dogBrain->idea[0] << RES << std::endl;
+			dogBrain->setIdea(0, "I wanna play");
+			dogBrain->setIdea(1, "That smells good");
+			
+			std::cout << OR;
+			if( (idx) % 2 == 0 ) {
+				
+				std::cout << animals[idx]->getType() << ": " << dogBrain->getIdea(0) << RES << std::endl;
+			} else {
+				
+				std::cout << animals[idx]->getType() << ": " << dogBrain->getIdea(1) << RES << std::endl;
+			}
+			std::cout << RES;
 
+		} else {
+
+			animals[idx] = new Cat();
+			std::cout << animals[idx]->getType() << " " << std::endl;
+			animals[idx]->makeSound();
+			catBrain = animals[idx]->getBrain();
+			catBrain->setIdea(6, "I just wanna sleep");
+			catBrain->setIdea(7, "Give me food");
+
+			std::cout << LB;
+			if( idx % 2 == 0 ) {
+
+				std::cout << animals[idx]->getType() << ": " << catBrain->getIdea(6) << std::endl;
+			} else {
+				
+				std::cout << animals[idx]->getType() << ": " << catBrain->getIdea(7) << std::endl;
+			}
+			std::cout << RES;
+		}
 	}
-	
-	for (int jdx = NUM_ANIMALS / 2; jdx < NUM_ANIMALS; jdx++) {
 
-		animals[jdx] = new Cat();
-		std::cout << animals[jdx]->getType() << " " << std::endl;
-		animals[jdx]->makeSound();
-		catBrain = animals[jdx]->getBrain();
-		catBrain->idea[5] = "\"I just wanna sleep\"";
-		std::cout << LB;
-		std::cout << catBrain->idea[5] << RES << std::endl;
-	}
-
-	printHeadline( VL, "\tArray of Animals generating ideas");
+	copy_idea_test();
+	std::cout << std::endl;
 	
-	// if( catBrain != nullptr ) {
-		
-	// 	catBrain->idea[0] = "bal";
- 	// 	std::cout << animals[2]->getBrain()->idea[0] << std::endl;
-		
-	// }
-	
-	
-	dogBrain = animals[0]->getBrain();
-	catBrain = animals[2]->getBrain();
-	
-	dogBrain->idea[0] = "Hmm, Should I just run?";
-	
-	std::cout << dogBrain->idea[0]<< std::endl;
-	
-	printHeadline( VL, "\tArray of Animals deleted");
+	printHeadline( VL, "_____Array of Animals deleted_____");
 
 	for( int k = 0; k < NUM_ANIMALS; k++ ) {
 		
-		std::cout << (k + 1) << std::endl;
 		delete animals[k];
 	}
 	
@@ -140,71 +200,3 @@ int main() {
 	
 	return 0;
 }
-
-	// dogBrain = brain->idea[0] = "Hmm, Should I just run?";
-
-
-		// if( const Dog* dogPtr = dynamic_cast< const Dog* >(j)) {
-			
-		// std::cout << &dogBrain << std::endl;
-		// 	brain = dogPtr->getBrain();
-		// }
-
-	// dogBrain = animals[0]->getBrain();
-	// catBrain = animals[2]->getBrain();
-
-
-		// if( const Cat* catPtr = dynamic_cast< const Cat* >(i)) {
-			
-		// 	brain = catPtr->getBrain();
-			// if ( jdx % 2 == 0 ) {
-
-			// 	std::cout << " \"" << brain->idea[0] << "\"" << std::endl;
-			// }
-		// }
-		// delete i;
-	// delete j;
-	// delete i;
-
-	// for (int idx = 0; idx < NUM_ANIMALS / 2; idx++) {
-
-	// 	delete j;
-	// }
-
-	// for (int jdx = NUM_ANIMALS / 2; jdx < NUM_ANIMALS; jdx++) {
-
-	// 	delete i;
-	// }
-	
-	// printHeadline( GR, "\tAll make noise");
-
-	// i->makeSound();
-	// j->makeSound();
-	// meta->makeSound();
-
-	// printHeadline( VL, "\tObjects destroyed");
-	
-	// delete meta;
-	
-	// printHeadline( VL, "\tWrongObjects created");
-
-	// const WrongAnimal* wrongMeta = new WrongAnimal();
-	// const WrongAnimal* wrongJ = new WrongDog();
-	// const WrongAnimal* wrongI = new WrongCat();
-
-	// printHeadline( VL, "\tGet types");
-
-	// std::cout << wrongJ->getType() << " " << std::endl;
-	// std::cout << wrongI->getType() << " " << std::endl;
-
-	// printHeadline( OR, "\tAnimal makes noise");
-
-	// wrongI->makeSound();
-	// wrongJ->makeSound();
-	// wrongMeta->makeSound();
-
-	// printHeadline( VL, "\tObjects destroyed");
-	
-	// delete wrongMeta;
-	// delete wrongJ;
-	// delete wrongI;

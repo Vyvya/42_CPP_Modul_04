@@ -46,17 +46,6 @@ WrongDog& WrongDog::operator=( const WrongDog& other ) {
 	return *this;
 }
 
-// std::string WrongDog::getType() {
-	
-// 	// return this->_type;
-// 	return WrongAnimal::getType();
-// }
-
-// void WrongDog::setType( std::string type ) {
-
-// 	this->type = type;
-// }
-
 void WrongDog::makeSound() const {
 
 	std::cout << "WrongDog " << this->_type << " OUF! OUF! OUF!" << std::endl;

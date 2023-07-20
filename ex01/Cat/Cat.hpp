@@ -6,7 +6,7 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 00:01:50 by vgejno            #+#    #+#             */
-/*   Updated: 2023/07/19 18:11:25 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/07/20 20:03:21 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class Cat : public Animal {
 		Cat( std::string name );
 		Cat( const Cat& other );
 
-		~Cat();
+		virtual ~Cat();
 
 		Cat& operator=( const Cat& other );
 		

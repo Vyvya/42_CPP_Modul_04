@@ -32,7 +32,6 @@ class WrongAnimal {
 		WrongAnimal& operator=( const WrongAnimal& other );
 		
 		std::string getType() const; //{return _type;}
-		// void setType( std::string type );
 		
 		void makeSound() const; //virtual 
 			

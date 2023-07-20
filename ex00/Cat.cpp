@@ -6,7 +6,7 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 00:30:06 by vgejno            #+#    #+#             */
-/*   Updated: 2023/07/13 21:35:47 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/07/20 22:28:27 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,6 @@ Cat& Cat::operator=( const Cat& other ) {
 
 	return *this;
 }
-
-// std::string Cat::getType() const{
-	
-// 	return Animal::getType();
-// }
 
 void Cat::makeSound() const {
 

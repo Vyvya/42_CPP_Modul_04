@@ -6,7 +6,7 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 00:30:16 by vgejno            #+#    #+#             */
-/*   Updated: 2023/07/13 21:35:42 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/07/20 22:28:42 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,6 @@ Dog& Dog::operator=( const Dog& other ) {
 
 	return *this;
 }
-
-// std::string Dog::getType() {
-	
-// 	// return this->_type;
-// 	return Animal::getType();
-// }
-
-// void Dog::setType( std::string type ) {
-
-// 	this->type = type;
-// }
 
 void Dog::makeSound() const {
 

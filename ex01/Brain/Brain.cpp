@@ -6,7 +6,7 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 10:55:03 by vgejno            #+#    #+#             */
-/*   Updated: 2023/07/19 17:33:30 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/07/20 22:27:45 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Brain::Brain( const Brain& other ) {
 		
 		for( int i = 0; i < NUM_IDEAS; i++ ) {
 
-			idea[i] = other.idea[i];
+			_idea[i] = other._idea[i];
 		} 
 	}
 	   std::cout << "Copy of Brain formed" << std::endl;
@@ -31,10 +31,6 @@ Brain::Brain( const Brain& other ) {
 
 Brain::~Brain() {
 
-	// for(int j = 0; j < NUM_IDEAS; j++ ) {
-		
-	// 	// delete idea[j];
-	// } 
 	std::cout << "Brain nihiliated" << std::endl;
 }
 
@@ -44,7 +40,7 @@ Brain& Brain::operator=( const Brain& other ) {
 		
 		for( int i = 0; i < NUM_IDEAS; i++ ) {
 
-			idea[i] = other.idea[i];
+			_idea[i] = other._idea[i];
 		} 
 	}
 
@@ -52,3 +48,25 @@ Brain& Brain::operator=( const Brain& other ) {
 	return ( *this );
 }
 
+std::string Brain::getIdea( int num ) const {
+
+	if( num < 0 || num > NUM_IDEAS ) {
+		
+		std::cout << "Error getIdea: Number out of range" << std::endl;
+		return "";
+	}
+	
+	return this->_idea[num];
+}
+
+void Brain::setIdea( int num, std::string const& idea ) {
+
+	if( num < 0 || num > NUM_IDEAS ) {
+		
+		std::cout << "Error setIdea: Number out of range" << std::endl;
+		return ;
+	}
+	
+	this->_idea[num] = idea;
+	std::cout << "Idea: " << idea << " set into Brain at position: " << num << std::endl;
+}

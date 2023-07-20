@@ -31,7 +31,6 @@ class WrongDog : public WrongAnimal {
 		WrongDog& operator=( const WrongDog& other);
 		
 		std::string getType();
-		// void setType( std::string type );
 		
 		void makeSound() const;
 			

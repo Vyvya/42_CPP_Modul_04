@@ -6,7 +6,7 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 00:30:16 by vgejno            #+#    #+#             */
-/*   Updated: 2023/07/19 21:09:56 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/07/20 22:27:17 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ Dog::Dog() : Animal() {
 
 Dog::Dog( std::string type ) : Animal( type ) {
 
-	std::cout << "Dog " << this->_type << " born" << std::endl;
+	_type = type;
+	_brain = new Brain();
+	std::cout << "Dog named " << this->_type << " born" << std::endl;
 }
 
 Dog::Dog( const Dog& other ) {
@@ -43,9 +45,9 @@ Dog& Dog::operator=( const Dog& other ) {
 
 	if(this != &other) {
 		
-		delete this->_brain;
-		this->_type = other._type;
-		_brain = new Brain( *other._brain );
+		Animal::operator=(other); // Call the base class assignment operator
+		delete this->_brain; // Delete the current _brain to avoid memory leaks
+		_brain = new Brain( *other._brain );  // Deep copy the _brain from the other Dog
 	}
 	
 	std::cout << "Copy assignement operator on Dog called" << std::endl;
@@ -55,22 +57,22 @@ Dog& Dog::operator=( const Dog& other ) {
 
 Brain* Dog::getBrain() const {
 	
-	std::cout << "Dog got a doggy's idea in his brain" << std::endl;
+	std::cout << "Dog got a doggy's idea in his brain:" << std::endl;
 	return this->_brain;
 }
 
-// std::string Dog::getType() {
-	
-// 	// return this->_type;
-// 	return Animal::getType();
-// }
-
-// void Dog::setType( std::string type ) {
-
-// 	this->type = type;
-// }
 
 void Dog::makeSound() const {
 
-	std::cout << "Dog " << this->_type << " OUF! OUF! OUF!" << std::endl;
+	std::cout << "Dog says: OUF! OUF! OUF!" << std::endl; //this->_type << 
+}
+
+std::string Dog::getDogIdea( int num ) const {
+
+	return this->_brain->getIdea( num );
+}
+
+void Dog::setDogIdea( int num, std::string dogIdea ) {
+	
+	this->_brain->setIdea( num, dogIdea );
 }

@@ -27,7 +27,7 @@ class WrongAnimal {
 		WrongAnimal();
 		WrongAnimal( std::string type );
 		WrongAnimal( const WrongAnimal& other );
-		~WrongAnimal(); //virtual 
+		~WrongAnimal(); //not virtual 
 
 		WrongAnimal& operator=( const WrongAnimal& other );
 		
